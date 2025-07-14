@@ -1,0 +1,169 @@
+/* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    line-height: 1.6;
+    font-family: 'Arial', sans-serif;
+    color: #333;
+}
+
+#container {
+    width: 1024px;
+    margin: 0 auto;
+    box-shadow: 0 0 1em #ccc;
+}
+
+header {
+    background: #333;
+    color: white;
+    padding: 20px;
+}
+
+nav {
+    background: #666;
+    padding: 0;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    display: inline-block;
+}
+
+nav a:hover {
+    background: #555;
+}
+
+#wrapper {
+    margin: 0;
+    padding: 0;
+}
+
+#main {
+    padding: 20px;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.table th, .table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.table th {
+    background-color: #f2f2f2;
+}
+
+.btn {
+    background: #007bff;
+    color: white;
+    padding: 8px 16px;
+    text-decoration: none;
+    border-radius: 4px;
+    margin-right: 5px;
+    display: inline-block;
+}
+
+.btn-danger {
+    background: #dc3545;
+}
+
+.btn-large {
+    padding: 12px 24px;
+    font-size: 16px;
+}
+
+form p {
+    margin-bottom: 15px;
+}
+
+form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+form input[type="text"], form textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+footer {
+    background: #333;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Pagination Styles */
+.pagination-wrapper {
+    margin: 20px 0;
+    text-align: left;
+}
+
+.pagination-wrapper ul {
+    list-style: none;
+    display: flex;
+    padding: 0;
+    margin: 0;
+    background: white;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.pagination-wrapper li {
+    margin: 0;
+    display: flex;
+}
+
+.pagination-wrapper a, 
+.pagination-wrapper span {
+    display: block;
+    padding: 10px 15px;
+    text-decoration: none;
+    border: 1px solid #ddd;
+    color: #333;
+    background: white;
+    border-right: none;
+    min-width: 40px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.pagination-wrapper li:last-child a,
+.pagination-wrapper li:last-child span {
+    border-right: 1px solid #ddd;
+}
+
+.pagination-wrapper a:hover {
+    background-color: #f8f9fa;
+    color: #007bff;
+}
+
+.pagination-wrapper .disabled span {
+    color: #6c757d;
+    background-color: #fff;
+    cursor: not-allowed;
+}
+
+/* Responsive pagination */
+@media (max-width: 768px) {
+    .pagination-wrapper a, 
+    .pagination-wrapper span {
+        padding: 8px 12px;
+        min-width: 35px;
+        font-size: 14px;
+    }
+}
