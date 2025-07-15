@@ -4,6 +4,155 @@ Repository ini berisi kumpulan praktikum untuk mata kuliah Pemrograman Web 2 men
 
 ## Daftar Praktikum
 
+## Praktikum 1 : sistem MVC
+
+**Langkah Langkah**
+
+**Instalasi CodeIgniter 4**
+
+instalasi menggunakan composer :
+
+```bash
+composer create-project codeigniter4/appstarter . --no-dev
+```
+
+Untuk memastikan instalasi berhasil, akses http://localhost:8081/lab11_php_ci/public/ dan halaman welcome CodeIgniter 4 akan muncul.
+![image](https://github.com/user-attachments/assets/d7e1ab9b-9028-4995-b4f5-3b519bddc1d2)
+
+**Konfigurasi Dasar**
+
+Mengaktifkan Mode Debugging :
+  - Ubah file env menjadi .env
+  - Set CI_ENVIRONMENT = development
+
+```php
+CI_ENVIRONMENT = development
+```
+
+**Implementasi MVC**
+1. Routing
+   Menambahkan Route ke app/config/Routes.php :
+  ```php
+  $routes->get('/about', 'Page::about');
+  $routes->get('/contact', 'Page::contact');
+  $routes->get('/faqs', 'Page::faqs');
+  ```
+
+3. Controller
+Buat file controller menggunakan CLI : ```php spark make:controller page```
+```php
+<?php
+
+namespace App\Controllers;
+
+class Page extends BaseController
+{
+    public function about()
+    {
+        return view('about', [
+            'title' => 'Halaman About',
+            'content' => 'Ini adalah halaman about yang menjelaskan tentang isi halaman ini.'
+        ]);
+    }
+
+    public function contact()
+    {
+        return view('contact', [
+            'title' => 'Halaman Contact',
+            'content' => 'Ini adalah halaman contact untuk menghubungi kami.'
+        ]);
+    }
+
+    public function faqs()
+    {
+        return view('faqs', [
+            'title' => 'Halaman FAQ',
+            'content' => 'Ini adalah halaman FAQ yang berisi pertanyaan yang sering diajukan.'
+        ]);
+    }
+
+    public function tos()
+    {
+        echo "Ini halaman Terms of Services";
+    }
+}
+```
+
+4. View dengan template
+  - Template Header :
+    ```html
+        <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title><?= $title; ?></title>
+        <link rel="stylesheet" href="<?= base_url('/style.css'); ?>">
+    </head>
+    <body>
+        <div id="container">
+            <header>
+                <h1>Layout Sederhana</h1>
+            </header>
+            <nav>
+                <a href="<?= base_url('/'); ?>"
+                   class="<?= uri_string() == '' ? 'active' : ''; ?>">Home</a>
+    
+                <a href="<?= base_url('/artikel'); ?>"
+                   class="<?= str_starts_with(uri_string(), 'artikel') ? 'active' : ''; ?>">Artikel</a>
+    
+                <a href="<?= base_url('/about'); ?>"
+                   class="<?= str_starts_with(uri_string(), 'about') ? 'active' : ''; ?>">About</a>
+    
+                <a href="<?= base_url('/contact'); ?>"
+                   class="<?= str_starts_with(uri_string(), 'contact') ? 'active' : ''; ?>">Contact</a>
+            </nav>
+    
+            <section id="wrapper">
+                <section id="main">
+  
+    ```  
+  
+  
+  - Template Footer :
+    ```html
+                    </section>
+                <aside id="sidebar">
+                    <div class="widget-box">
+                        <h3 class="title">Widget Header</h3>
+                        <ul>
+                            <li><a href="#">Widget Link</a></li>
+                            <li><a href="#">Widget Link</a></li>
+                        </ul>
+                    </div>
+                    <div class="widget-box">
+                        <h3 class="title">Widget Text</h3>
+                        <p>Vestibulum lorem elit, iaculis in nisl volutpat, malesuada tincidunt arcu. Proin in leo fringilla, vestibulum mi porta, faucibus felis. Integer pharetra est nunc, nec pretium nunc pretium ac.</p>
+                    </div>
+                </aside>
+            </section>
+            <footer>
+                <p>&copy; 2021 - Universitas Pelita Bangsa</p>
+            </footer>
+        </div>
+    </body>
+    </html>
+    ```
+
+  - View Pages (contoh about.php)
+    ```php
+    <?= $this->extend('layout/main') ?>
+    
+    <?= $this->section('content') ?>
+    <h1><?= $title; ?></h1>
+    <hr>
+    <p><?= $content; ?></p>
+    <?= $this->endSection() ?>
+    ```
+
+hasil dari view about.php :
+
+![image](https://github.com/user-attachments/assets/4328eaf7-49fc-47ff-b9bd-e3eb28c4db66)
+
 ### Praktikum 2: Framework Lanjutan (CRUD)
 **Tujuan:**
 - Memahami konsep dasar Model
